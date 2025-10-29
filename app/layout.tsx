@@ -10,7 +10,6 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Orange Brandless - Unfiltered. Original. Unstoppable.",
   description: "Join the Orange Brandless crew. Unfiltered, original, and unstoppable content and community.",
-  generator: "v0.app",
   openGraph: {
     title: "Orange Brandless",
     description: "Unfiltered. Original. Unstoppable.",
