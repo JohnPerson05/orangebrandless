@@ -187,59 +187,6 @@ export default function Terms() {
 
         {/* Back to Home Link */}
         
-        {/* Footer */}
-        <motion.footer 
-          className="mt-16 pt-8 border-t border-orange-500/20"
-          variants={itemVariants}
-        >
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-center md:text-left">
-              <p className="text-gray-400 text-sm">
-                © 2025 Orange Brandless Clan. All rights reserved.
-              </p>
-              <p className="text-gray-500 text-xs mt-1">
-                Built with 🧡 by the Orange Dynasty
-              </p>
-            </div>
-            <div className="flex gap-6">
-              <Link 
-                href="/terms" 
-                className="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium"
-              >
-                Terms of Service
-              </Link>
-              <Link 
-                href="/" 
-                className="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium"
-              >
-                Home
-              </Link>
-              <Link 
-                href="/about" 
-                className="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium"
-              >
-                About
-              </Link>
-            </div>
-          </div>
-        </motion.footer>
-      </motion.div>
-
-      {/* Scroll to Top Button */}
-      <motion.button
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-8 p-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full shadow-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-300 z-50"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ 
-          opacity: showScrollTop ? 1 : 0,
-          scale: showScrollTop ? 1 : 0,
-        }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        style={{ display: showScrollTop ? 'block' : 'none' }}
-      >
-        <ArrowUp className="w-6 h-6" />
-      </motion.button>
         <motion.div className="mt-8 text-center" variants={itemVariants}>
           <Link
             href="/"
