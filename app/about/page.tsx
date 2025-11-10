@@ -974,7 +974,7 @@ export default function About() {
                 © 2025 Orange Brandless Clan. All rights reserved.
               </p>
               <p className="text-gray-500 text-xs mt-1">
-                Built with 🧡 by the Orange Dynasty
+                Built with 🧡 by <span className="text-orange-400 font-semibold">jaypeee0x.sign</span>
               </p>
             </div>
             <div className="flex gap-6">
