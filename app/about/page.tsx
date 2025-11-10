@@ -3,7 +3,8 @@
 import { motion, useReducedMotion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, ArrowUp } from "lucide-react"
+import { useState, useEffect } from "react"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -88,6 +89,20 @@ const wordRevealVariants = {
 
 export default function About() {
   const prefersReducedMotion = useReducedMotion()
+  const [showScrollTop, setShowScrollTop] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
   
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#1a1a1a] to-[#0d0d0d] py-12 px-4 overflow-hidden">
@@ -195,7 +210,7 @@ export default function About() {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/5 to-orange-500/0 animate-shimmer" />
             <motion.p 
-              className="text-gray-300 text-lg leading-relaxed mb-4 relative z-10"
+              className="text-gray-300 text-lg leading-relaxed mb-6 relative z-10"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
@@ -363,7 +378,7 @@ export default function About() {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 opacity-50 animate-shimmer" />
             <motion.p 
-              className="text-gray-300 text-lg leading-relaxed mb-4 relative z-10"
+              className="text-gray-300 text-lg leading-relaxed mb-6 relative z-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -372,7 +387,7 @@ export default function About() {
               We are <strong className="text-orange-400">creators, stakers, and dreamers</strong> united under one banner: <em className="text-orange-300">belief in the Sign vision</em>.
             </motion.p>
             <motion.p 
-              className="text-gray-300 text-lg leading-relaxed mb-4 relative z-10"
+              className="text-gray-300 text-lg leading-relaxed mb-6 relative z-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -381,7 +396,7 @@ export default function About() {
               From newcomers exploring their first stake to veterans guiding others in the <strong className="text-orange-400">Orange path</strong>—each member adds their own spark to the <strong className="text-orange-500">orange dynasty</strong>.
             </motion.p>
             <motion.p 
-              className="text-gray-300 text-lg leading-relaxed mb-4 relative z-10"
+              className="text-gray-300 text-lg leading-relaxed mb-6 relative z-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -390,7 +405,7 @@ export default function About() {
               In Orange Brandless, we don't compete—<strong className="text-white">we align in purpose</strong>.
             </motion.p>
             <motion.p 
-              className="text-gray-300 text-lg leading-relaxed mb-4 relative z-10"
+              className="text-gray-300 text-lg leading-relaxed mb-6 relative z-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -904,7 +919,6 @@ export default function About() {
             className="text-yellow-400 font-semibold mb-2"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
             animate={{
               textShadow: [
@@ -948,7 +962,60 @@ export default function About() {
             🍊
           </motion.p>
         </motion.div>
+
+        {/* Footer */}
+        <motion.footer 
+          className="mt-16 pt-8 border-t border-orange-500/20"
+          variants={itemVariants}
+        >
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-center md:text-left">
+              <p className="text-gray-400 text-sm">
+                © 2025 Orange Brandless Clan. All rights reserved.
+              </p>
+              <p className="text-gray-500 text-xs mt-1">
+                Built with 🧡 by the Orange Dynasty
+              </p>
+            </div>
+            <div className="flex gap-6">
+              <Link 
+                href="/terms" 
+                className="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium"
+              >
+                Terms of Service
+              </Link>
+              <Link 
+                href="/" 
+                className="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium"
+              >
+                Home
+              </Link>
+              <Link 
+                href="/about" 
+                className="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium"
+              >
+                About
+              </Link>
+            </div>
+          </div>
+        </motion.footer>
       </motion.div>
+
+      {/* Scroll to Top Button */}
+      <motion.button
+        onClick={scrollToTop}
+        className="fixed bottom-8 right-8 p-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full shadow-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-300 z-50"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ 
+          opacity: showScrollTop ? 1 : 0,
+          scale: showScrollTop ? 1 : 0,
+        }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        style={{ display: showScrollTop ? 'block' : 'none' }}
+      >
+        <ArrowUp className="w-6 h-6" />
+      </motion.button>
     </main>
   )
 }

@@ -136,15 +136,35 @@ export default function Home() {
       </motion.div>
 
       <motion.footer
-        className="relative z-10 w-full text-center py-6 border-t border-orange-500/20 mt-8"
+        className="relative z-10 w-full py-6 border-t border-orange-500/20 mt-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
       >
-        <p className="text-gray-500 text-xs">
-          © 2025 Orange Brandless. Built by <span className="text-orange-400 font-semibold">jaypeee0x.sign</span>
-        </p>
-        <p className="text-gray-600 text-xs mt-1">Part of Brandless Clan</p>
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
+            <div className="text-center md:text-left">
+              <p className="text-gray-500 text-xs">
+                © 2025 Orange Brandless Clan. Built by <span className="text-orange-400 font-semibold">jaypeee0x.sign</span>
+              </p>
+              <p className="text-gray-600 text-xs mt-1">Part of the Orange Dynasty</p>
+            </div>
+            <div className="flex gap-6">
+              <Link 
+                href="/terms" 
+                className="text-orange-400 hover:text-orange-300 transition-colors text-xs font-medium"
+              >
+                Terms of Service
+              </Link>
+              <Link 
+                href="/about" 
+                className="text-orange-400 hover:text-orange-300 transition-colors text-xs font-medium"
+              >
+                About Us
+              </Link>
+            </div>
+          </div>
+        </div>
       </motion.footer>
     </main>
   )
