@@ -124,3 +124,46 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  /* Shimmer animation for cards */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+  
+  .animate-shimmer {
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+  }
+  
+  /* Gradient animation for text */
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .animate-gradient {
+    animation: gradient 3s ease infinite;
+  }
+  
+  /* Performance optimization */
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .will-change-opacity {
+    will-change: opacity;
+  }
+}
